@@ -649,7 +649,7 @@ func resourceKubectlManifestDelete(ctx context.Context, d *schema.ResourceData, 
 	// and it's up to us to check that the object has been successfully deleted.
 	for waitForDelete {
 		_, err := restClient.ResourceInterface.Get(ctx, manifest.GetName(), meta_v1.GetOptions{})
-		resourceGone = errors.IsGone(err) || errors.IsNotFound(err)
+		resourceGone = errors.IsNotFound(err)
 		if err != nil {
 			if resourceGone {
 				break
