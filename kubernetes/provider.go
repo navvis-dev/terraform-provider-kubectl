@@ -171,6 +171,7 @@ func Provider() *schema.Provider {
 		},
 
 		ResourcesMap: map[string]*schema.Resource{
+			"kubectl_file_documents": reourceKubectlFileDocuments(),
 			"kubectl_manifest":       resourceKubectlManifest(),
 			"kubectl_server_version": resourceKubectlServerVersion(),
 		},
