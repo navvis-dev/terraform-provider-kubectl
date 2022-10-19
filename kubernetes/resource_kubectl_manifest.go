@@ -220,6 +220,8 @@ metadata:
 
 			if !d.NewValueKnown("yaml_body") {
 				log.Printf("[TRACE] yaml_body value interpolated, skipping customized diff")
+				d.SetNewComputed("yaml_body_parsed")
+				d.SetNewComputed("yaml_incluster")
 				return nil
 			}
 
@@ -649,7 +651,7 @@ func resourceKubectlManifestDelete(ctx context.Context, d *schema.ResourceData, 
 	// and it's up to us to check that the object has been successfully deleted.
 	for waitForDelete {
 		_, err := restClient.ResourceInterface.Get(ctx, manifest.GetName(), meta_v1.GetOptions{})
-		resourceGone = errors.IsGone(err) || errors.IsNotFound(err)
+		resourceGone = errors.IsNotFound(err)
 		if err != nil {
 			if resourceGone {
 				break
