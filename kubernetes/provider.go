@@ -244,7 +244,7 @@ func providerConfigure(d *schema.ResourceData, terraformVersion string) (interfa
 		kubectlApplyRetryCount = uint64(applyEnvValue)
 	}
 
-	cfg.QPS = 150.0
+	cfg.QPS = 50.0
 	cfg.Burst = 3000
 
 	// Overriding with static configuration
