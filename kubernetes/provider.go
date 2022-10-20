@@ -244,8 +244,8 @@ func providerConfigure(d *schema.ResourceData, terraformVersion string) (interfa
 		kubectlApplyRetryCount = uint64(applyEnvValue)
 	}
 
-	cfg.QPS = 100.0
-	cfg.Burst = 100
+	cfg.QPS = 150.0
+	cfg.Burst = 3000
 
 	// Overriding with static configuration
 	cfg.UserAgent = fmt.Sprintf("HashiCorp/1.0 Terraform/%s", terraformVersion)
