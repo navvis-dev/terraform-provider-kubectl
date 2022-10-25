@@ -246,6 +246,7 @@ func providerConfigure(d *schema.ResourceData, terraformVersion string) (interfa
 
 	cfg.QPS = 50.0
 	cfg.Burst = 3000
+	cfg.Timeout = 180
 
 	// Overriding with static configuration
 	cfg.UserAgent = fmt.Sprintf("HashiCorp/1.0 Terraform/%s", terraformVersion)
